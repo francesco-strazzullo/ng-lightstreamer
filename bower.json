@@ -1,0 +1,25 @@
+{
+  "name": "ng-lightstreamer",
+  "version": "0.0.1",
+  "homepage": "https://github.com/francesco-strazzullo/ng-lightstreamer",
+  "authors": [
+    "francesco.strazzullo86@gmail.com"
+  ],
+  "description": "Angular Lightstreamer Client",
+  "main": "ng-lightstreamer.js",
+  "keywords": [
+    "LightStreamer",
+    "push"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.4.7"
+  }
+}
