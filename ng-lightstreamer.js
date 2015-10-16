@@ -14,7 +14,9 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 			});
 			
 			return {
-				connect:lsClient.connect
+				connect:function(){
+					return lsClient.connect();
+				};
 			};
 		}
 	};
