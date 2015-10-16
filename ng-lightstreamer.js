@@ -13,6 +13,6 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 			return {
 				connect:lsClient.connect
 			};
-		};
+		}
 	};
 }]);
