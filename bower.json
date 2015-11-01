@@ -6,7 +6,7 @@
     "francesco.strazzullo86@gmail.com"
   ],
   "description": "Angular Lightstreamer Client",
-  "main": "ng-lightstreamer.js",
+  "main": ["ng-lightstreamer.js","lightstreamer-client.js"],
   "keywords": [
     "LightStreamer",
     "push"
