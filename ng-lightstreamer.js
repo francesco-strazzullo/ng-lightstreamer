@@ -10,11 +10,11 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 		},
 		$get:function(){
 			lsClient = new LightstreamerClient(config.url,config.channel);	
-			
+
 			return {
 				connect:function(){
 					return lsClient.connect();
-				};
+				}
 			};
 		}
 	};
