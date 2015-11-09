@@ -24,6 +24,30 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 								$rootScope.$apply(cb(status));
 							}
 						});
+					},
+					addSubscriber:function(options){
+						options = options || {};
+
+						options.subscriptionMode = options.subscriptionMode || "MERGE";
+						options.items = options.items || [];
+						options.fields = options.fields || [];
+
+						var subscription = new Lightstreamer.Subscription(options.subscriptionMode,options.items,options.fields);
+
+						subscription.setDataAdapter(options.dataAdapter);
+						if(options.requestedSnapshot){
+							subscription.setRequestedSnapshot("yes");
+						}
+
+						subscription.addListener({
+      						onItemUpdate:function(updateInfo){
+      							var cb = options.onUpdate || angular.noop;
+      							$rootScope.$apply(cb(_.slice(updateInfo.Sd,2)));
+      						}
+      					});
+
+      					lsClient.subscribe(subscription);
+
 					}
 				};
 			}
