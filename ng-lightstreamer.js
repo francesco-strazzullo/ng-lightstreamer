@@ -9,9 +9,7 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 			configuration = config;
 		},
 		$get:function(){
-			define("js/lsClient",["LightstreamerClient"],function(LightstreamerClient) {
-				lsClient = new LightstreamerClient(config.url,config.channel);	
-			});
+			lsClient = new LightstreamerClient(config.url,config.channel);	
 			
 			return {
 				connect:function(){
