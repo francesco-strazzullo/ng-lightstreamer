@@ -42,7 +42,10 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 						subscription.addListener({
       						onItemUpdate:function(updateInfo){
       							var cb = options.onUpdate || angular.noop;
-      							$rootScope.$apply(cb(_.slice(updateInfo.Sd,2)));
+      							$rootScope.$apply(cb({
+      								item:updateInfo.By,
+      								values:_.slice(updateInfo.Sd,2)
+      							}));
       						}
       					});
 
