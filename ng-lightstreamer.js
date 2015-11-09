@@ -8,14 +8,25 @@ angular.module('ng-lightstreamer',[]).provider('lightstreamer',[function(){
 		setConfiguration:function(config){
 			configuration = config;
 		},
-		$get:function(){
-			lsClient = new Lightstreamer.LightstreamerClient(configuration.server,configuration.adapter);
+		$get:[
+			'$rootScope',
+			function(
+				$rootScope){
+				lsClient = new Lightstreamer.LightstreamerClient(configuration.server,configuration.adapter);
 
-			return {
-				connect:function(){
-					return lsClient.connect();
-				}
-			};
-		}
+				return {
+					connect:function(){
+						return lsClient.connect();
+					},
+					addStatusChangeListener:function(cb){
+						lsClient.addListener({
+							onStatusChange:function(status){
+								$rootScope.$apply(cb(status));
+							}
+						});
+					}
+				};
+			}
+		]
 	};
 }]);
